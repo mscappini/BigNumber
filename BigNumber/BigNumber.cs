@@ -551,6 +551,16 @@ namespace BigNumber
 
 		#region Operator Overloads
 
+		public static bool operator true(BigNumber a)
+		{
+			return !a.IsZero();
+		}
+
+		public static bool operator false(BigNumber a)
+		{
+			return a.IsZero();
+		}
+
 		public static BigNumber operator ++(BigNumber a)
 		{
 			return a.Add(1);
