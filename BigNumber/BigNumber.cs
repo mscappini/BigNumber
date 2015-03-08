@@ -285,7 +285,7 @@ namespace BigNumber
 			}
 			else
 			{
-				Queue<BigNumber> additives = new Queue<BigNumber>(b.digits.Count);
+				BigNumber c = new BigNumber();
 
 				LinkedListNode<byte> second = b.digits.First;
 
@@ -293,7 +293,6 @@ namespace BigNumber
 				while (second != null)
 				{
 					BigNumber additive = new BigNumber();
-					additives.Enqueue(additive);
 
 					for (int i = 0; i < rank; i++)
 						additive.digits.AddLast(0);
@@ -329,20 +328,13 @@ namespace BigNumber
 						}
 					}
 
+					c += additive;
+
 					rank++;
 					second = second.Next;
 				}
 
-				bool wasNegative = a.isNegative;
-
-				BigNumber c = new BigNumber();
-				while (additives.Count > 0)
-				{
-					c += additives.Dequeue();
-				}
-
-				if (wasNegative)
-					c.isNegative = true;
+				c.isNegative = a.isNegative;
 
 				if (b.isNegative)
 					c.isNegative = !c.isNegative;
