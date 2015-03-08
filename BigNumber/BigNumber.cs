@@ -551,6 +551,16 @@ namespace BigNumber
 
 		#region Operator Overloads
 
+		public static BigNumber operator ++(BigNumber a)
+		{
+			return a.Add(1);
+		}
+
+		public static BigNumber operator --(BigNumber a)
+		{
+			return a.Subtract(1);
+		}
+
 		public static BigNumber operator +(BigNumber a, BigNumber b)
 		{
 			return a.Add(b);
@@ -589,6 +599,16 @@ namespace BigNumber
 		public static bool operator >(BigNumber a, BigNumber b)
 		{
 			return a.CompareTo(b) > 0;
+		}
+
+		public static bool operator <=(BigNumber a, BigNumber b)
+		{
+			return a.CompareTo(b) <= 0;
+		}
+
+		public static bool operator >=(BigNumber a, BigNumber b)
+		{
+			return a.CompareTo(b) >= 0;
 		}
 
 		#endregion
